@@ -1,0 +1,51 @@
+.index-nav-wrapper {
+  position: relative;
+  padding-bottom: 666px;
+
+  background-color: @primary;
+  font-size: 10px;
+
+  min-height: 100vh;
+  z-index: 1000;
+
+  box-sizing: border-box;
+
+  &::before {
+    .pseudo();
+    width: 413px;
+    height: 666px;
+    bottom: 130px;
+    left: 0;
+    background: url('../img/index-decor.png') no-repeat left top;
+    z-index: 1100;
+  }
+}
+
+.index-nav__logo {
+  //width: 70%;
+  display: block;
+  margin: 40px auto 37px;
+}
+
+.index-nav__list {
+  list-style: none;
+  //padding-left: 35px;
+
+  @media @md-desktop {
+    padding-left: 0;
+  }
+}
+
+.index-nav__item {
+  margin-bottom: 35px;
+}
+
+.index-nav__link {
+  .font(@fira-sans, 1.5em, 1em, 600);
+  text-decoration: none;
+  color: @white;
+
+  text-transform: uppercase;
+}
+
+

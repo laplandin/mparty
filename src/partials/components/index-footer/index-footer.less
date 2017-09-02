@@ -1,0 +1,67 @@
+.index-footer {
+  position: absolute;
+  height: 415px;
+  background: url("../img/footer-triangles.png") repeat-x center top;
+  //background-size: cover;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  font-size: 10px;
+  color: @white;
+  text-align: right;
+
+  //padding: 160px 0 60px;
+  z-index: 1000;
+}
+
+.footer-content {
+  padding-top: 150px;
+}
+
+.index-footer__logo-wrapper {
+  margin-top: 110px;
+  text-align: left;
+}
+
+.index-footer__tel {
+  display: inline-block;
+  .font('fira-sans', 3.7em, 1em, 700);
+  color: @white;
+
+  margin-bottom: 30px;
+}
+
+.index-footer__established {
+  display: inline-block;
+  //text-align: center;
+  position: relative;
+  left: 58px;
+  top: -20px;
+  .font('fira-book', 2em, 1em, 400);
+}
+
+.index-footer__address,
+.index-footer__text {
+  .font('fira-book', 2em, 1em, 400);
+}
+
+.index-footer__text-wrapper {
+  position: relative;
+  margin-top: 30px;
+  padding-top: 20px;
+
+  &::before {
+    .pseudo();
+    top: 0;
+    width: 100%;
+    height: 2px;
+
+    background-image: linear-gradient( 90deg, rgb(26,173,153) 0%, rgb(255,255,255) 0%, rgb(161,243,255) 0%, rgb(195,255,75) 100%);
+
+  }
+}
+
+
+
