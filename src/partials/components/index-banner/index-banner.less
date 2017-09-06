@@ -4,29 +4,27 @@
 
 .index-banner-wrapper {
   padding: 25vh 0 0 0;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   height: calc(~'100vh + 100px');
 
-  background: url('../img/index-banner.jpg') no-repeat center top;
+  background: url('../img/index-banner.png') no-repeat center top;
   background-size: cover;
 
   font-size: 10px;
   box-sizing: border-box;
+}
 
-  &::after {
-    .pseudo();
-    bottom: 0;
-    right: 0;
-    height: 292px;
-    width: 569px;
-
-    background: url('../img/index-banner-bottom.png') no-repeat center center;
-  }
+.index-banner__bottom-decor {
+  position: absolute;
+  right: 0;
+  bottom: -16%;
+  width: 50%;
+  height: auto;
+  pointer-events: none;
 }
 
 .index-banner__title {
-  margin: 0 auto;
-  position: relative;
+  text-align: center;
   margin-bottom: 15vh;
 
   @media @wide-desktop {
@@ -41,16 +39,12 @@
 
 .index-banner__text {
   display: block;
-  position: absolute;
-  left: 45%;
-  top: 67%;
+  position: relative;
+  left: 28px;
+  top: -114px;
   text-transform: uppercase;
   .font(@fira-sans, 1.5em, 1em, 200);
   color: @white;
-
-  @media @md-desktop {
-    left: 39%;
-  }
 }
 
 .index-banner__btn-wrapper {
@@ -67,63 +61,62 @@
   bottom: 0;
 }
 
-.index-scene {
+.index-banner__scene {
   height: 430px;
   //top: -140px;
   z-index: 1100;
   width: 100%;
   position: absolute !important;
   bottom: 0;
-}
 
-.index-scene[style] {
+  pointer-events: none;
 
-}
-
-.bottom-right {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.center-bottom {
-  position: absolute;
-  right: 25%;
-  //right: 50%;
-  bottom: 50px;
-}
-
-.center-middle {
-  position: absolute;
-  left: 55%;
-  top: 50%;
-}
-
-.right-middle {
-  position: absolute;
-  right: 100px;
-  top: 45%;
-
-  &--double {
+  .bottom-right {
     position: absolute;
-    top: 15%;
-    right: 10%;
+    right: 0;
+    bottom: 0;
   }
-}
 
-.left-middle {
-  position: absolute;
-  left: 0;
-  top: 10%;
-}
+  .center-bottom {
+    position: absolute;
+    right: 25%;
+    //right: 50%;
+    bottom: 50px;
+  }
 
-.right-top {
-  position: absolute;
-  top: 0;
-  right: 50px
-}
+  .center-middle {
+    position: absolute;
+    left: 55%;
+    top: 50%;
+  }
 
-.layer {
-  width: 100%;
-  height: 100%;
+  .right-middle {
+    position: absolute;
+    right: 100px;
+    top: 45%;
+
+    &--double {
+      position: absolute;
+      top: 15%;
+      right: 10%;
+    }
+  }
+
+  .left-middle {
+    position: absolute;
+    left: 0;
+    top: 10%;
+  }
+
+  .right-top {
+    position: absolute;
+    top: 0;
+    right: 50px
+  }
+
+  .layer {
+    width: 100%;
+    height: 100%;
+  }
+
 }

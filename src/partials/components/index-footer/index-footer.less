@@ -1,8 +1,8 @@
 .index-footer {
   position: absolute;
-  height: 415px;
-  background: url("../img/footer-triangles.png") repeat-x center top;
-  //background-size: cover;
+  min-height: 420px;
+  background: url("../img/footer-polygons.svg") no-repeat center top;
+  background-size: cover;
 
   bottom: 0;
   left: 0;
@@ -17,11 +17,11 @@
 }
 
 .footer-content {
-  padding-top: 150px;
+  padding-top: 200px;
 }
 
 .index-footer__logo-wrapper {
-  margin-top: 110px;
+  margin-top: 50px;
   text-align: left;
 }
 
@@ -30,7 +30,12 @@
   .font('fira-sans', 3.7em, 1em, 700);
   color: @white;
 
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+
+  &:hover {
+    text-decoration: none;
+    color: @white;
+  }
 }
 
 .index-footer__established {
@@ -59,8 +64,55 @@
     height: 2px;
 
     background-image: linear-gradient( 90deg, rgb(26,173,153) 0%, rgb(255,255,255) 0%, rgb(161,243,255) 0%, rgb(195,255,75) 100%);
-
   }
+}
+.index-footer__scene {
+  .layer {
+    position: absolute;
+
+    &:nth-child(1) {
+      left: 20%;
+      top: -200px;
+
+      //animation: motion1 5s infinite;
+      //animation-timing-function: linear;
+      //animation-duration: 5s;
+      //animation-timing-function: infinite;
+    }
+
+    &:nth-child(2) {
+      right: 2%;
+      top: -20px;
+    }
+
+    &:nth-child(3) {
+      left: 17%;
+      top: -30px;
+    }
+
+    &:nth-child(4) {
+      left: 8%;
+      top: 50px;
+    }
+  }
+}
+
+@keyframes motion1 {
+  from {}
+  25% {
+    top: -170px;
+    left: 18%
+  }
+  50% {
+    top: -180px;
+    left: 20%;
+  }
+
+  75% {
+    top: -220px;
+    left: 22%;
+  }
+  //to {top: -200px}
 }
 
 

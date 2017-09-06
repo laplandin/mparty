@@ -1,10 +1,6 @@
-$(document).ready(function() {
-    equalNav();
-});
+$(document).ready(equalNav);
 
-$(window).resize(function() {
-   equalNav();
-});
+$(window).resize(equalNav);
 
 function equalNav() {
     var h = $('.index-content-wrapper').outerHeight();

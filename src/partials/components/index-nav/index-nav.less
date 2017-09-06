@@ -41,11 +41,36 @@
 }
 
 .index-nav__link {
+  position: relative;
+  display: inline-block;
   .font(@fira-sans, 1.5em, 1em, 600);
   text-decoration: none;
   color: @white;
+  //border-bottom: 0 solid @white;
+  //border-bottom-width: 0;
 
   text-transform: uppercase;
+  transition: border-bottom .3s linear;
+
+  &::after {
+    .pseudo();
+    height: 2px;
+    background-color: @white;
+    bottom: -7px;
+    left: 0;
+    width: 0;
+
+    transition: width .2s linear;
+  }
+
+  &:hover {
+    color: @white;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
 }
 
 
