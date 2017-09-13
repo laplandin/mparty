@@ -78,9 +78,11 @@ gulp.task('ttf2woff', function(){
         .pipe(gulp.dest('./src/fonts'));
 });
 
+var repertoireData = require('./src/model/repertoire-items.json');
+
 gulp.task('html:build', function() {
    return gulp.src('./src/*.hbs') //выбор фалов по нужному пути
-        .pipe(handlebars({}, {
+        .pipe(handlebars({repertoire: repertoireData}, {
             ignorePartials: true,
             batch: ['./src/partials']
         }))

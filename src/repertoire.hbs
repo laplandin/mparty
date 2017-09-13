@@ -1,0 +1,29 @@
+{{#> layouts/base title="Репертуар"}}
+    {{#* inline "nav"}}
+        {{> components/nav}}
+    {{/inline}}
+
+    {{#*inline "content-block"}}
+        <div class="container-fluid content-wrapper">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    {{> components/index-nav/index-nav}}
+                    {{> components/socials/socials}}
+                </div>
+                <div class="col-xs-10 repertoire-content-wrapper">
+                    <div class="row">
+                        <div class="col-xs-12 repertoire-banner-wrapper">
+                            {{> components/banner/banner title='Репертуар'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{#each repertoire}}
+                            {{> components/repertoire-item/repertoire-item content=this}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+    {{/inline}}
+{{/layouts/base}}
