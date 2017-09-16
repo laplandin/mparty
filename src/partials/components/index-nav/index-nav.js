@@ -1,4 +1,6 @@
-$(document).ready(equalNav);
+$(document).ready(function() {
+    $('img').ready(equalNav);
+});
 
 $(window).resize(equalNav);
 

@@ -177,6 +177,9 @@ gulp.task('watch', function() {
     watch([path.watch.html, path.watch.hbs], function(event, cb) {
         gulp.start('html:build');
     });
+    watch(['./src/model/*.*'], function(event, cb) {
+        gulp.start('html:build');
+    });
     watch([path.watch.css], function(event, cb) {
         gulp.start('css:build');
     });
