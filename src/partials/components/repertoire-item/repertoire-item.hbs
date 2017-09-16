@@ -4,5 +4,12 @@
         <p class="repertoire-item__text">{{content.text}}</p>
         <a href="{{content.link}}" class="repertoire-item__link">Посмотреть видео</a>
     </div>
-    <div class="repertoire-item__slider"><img class="repertoire-item__image" src="img/repertoire/{{content.src}}" alt=""></div>
+    <div class="repertoire-item__slider" data-image="0">
+        <img class="repertoire-item__image" src="img/repertoire/{{content.src}}" alt="">
+        <ul class="repertoire-item__slider-toggles-list">
+            <li class="repertoire-item__slider-toggle repertoire-item__slider-toggle--active"></li>
+            <li class="repertoire-item__slider-toggle"></li>
+            <li class="repertoire-item__slider-toggle"></li>
+        </ul>
+    </div>
 </article>
