@@ -5,6 +5,10 @@
   margin: -1px;
   font-size: 10px;
 
+  @media @md-desktop {
+    font-size: 8px;
+  }
+
   border: 1px solid transparent;
 
   &:nth-child(2n) {
@@ -53,7 +57,11 @@
   position: relative;
   margin: 0;
   margin-bottom: 58px;
-  padding-top: 25px;
+  padding-top: 2.5em;
+
+  @media @md-desktop {
+    margin-bottom: 2em;
+  }
 
   .font(@fira-sans, 1.8em, 1em, 400);
 
