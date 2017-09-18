@@ -1,4 +1,4 @@
-<article class="repertoire-item">
+<article class="repertoire-item" data-index="{{@index}}">
     <div class="repertoire-item__info">
         <h3 class="repertoire-item__title">{{content.title}}</h3>
         <p class="repertoire-item__text">{{content.text}}</p>
@@ -11,5 +11,6 @@
             <li class="repertoire-item__slider-toggle"></li>
             <li class="repertoire-item__slider-toggle"></li>
         </ul>
+        {{> components/preloader/preloader}}
     </div>
 </article>

@@ -4,19 +4,19 @@
     {{/inline}}
 
     {{#*inline "content-block"}}
-        <div class="container-fluid content-wrapper">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-2 index-nav-wrapper">
                     {{> components/index-nav/index-nav}}
                     {{> components/socials/socials}}
                 </div>
-                <div class="col-xs-10 repertoire-content-wrapper">
+                <div class="col-xs-10 content-wrapper content-wrapper--repertoire">
                     <div class="row">
                         <div class="col-xs-12 repertoire-banner-wrapper">
                             {{> components/banner/banner title='Репертуар'}}
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row repertoire-list">
                         {{#each repertoire}}
                             {{> components/repertoire-item/repertoire-item content=this}}
                         {{/each}}
@@ -25,5 +25,10 @@
             </div>
         </div>
         {{> components/index-footer/index-footer}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="js/templates.js"></script>
     {{/inline}}
 {{/layouts/base}}

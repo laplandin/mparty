@@ -16,10 +16,14 @@ var  plumber = require('gulp-plumber');
 var  sequence = require('gulp-sequence');
 var  less = require('gulp-less');
 var  concat = require('gulp-concat');
-var handlebars = require('gulp-compile-handlebars');
+var handlebarsCompile = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
 var ttf2woff2 = require('gulp-ttf2woff2');
 var ttf2woff = require('gulp-ttf2woff');
+
+var wrap       = require('gulp-wrap');
+var handlebars = require('gulp-handlebars');
+var declare    = require('gulp-declare');
 // var  ignore = require('gulp-ignore');
 
 var path = {
@@ -82,7 +86,7 @@ var repertoireData = require('./src/model/repertoire-items.json');
 
 gulp.task('html:build', function() {
    return gulp.src('./src/*.hbs') //выбор фалов по нужному пути
-        .pipe(handlebars({repertoire: repertoireData}, {
+        .pipe(handlebarsCompile({repertoire: repertoireData}, {
             ignorePartials: true,
             batch: ['./src/partials']
         }))
@@ -159,6 +163,20 @@ gulp.task('files:copy', function() {
         .pipe(reload({stream: true}));
 });
 
+gulp.task('precompile', function() {
+    return gulp.src('./src/precompiled/*.html')
+        .pipe(handlebars({
+            handlebars: require('handlebars')
+        }))
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            namespace: 'App.templates',
+            noRedeclare: true
+        }))
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest(path.build.js));
+});
+
 gulp.task('build', sequence([
         'clean'
     ],
@@ -169,7 +187,8 @@ gulp.task('build', sequence([
         'cssVendor',
         'fonts:build',
         'image:build',
-        'plugins:copy'
+        'plugins:copy',
+        'precompile'
         // 'files:copy'
     ]) );
 
