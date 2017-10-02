@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Корпоративный праздник",
+    "src": "img/services/service-item-1.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Новый год",
+    "src": "img/services/service-item-2.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Свадьба",
+    "src": "img/services/service-item-3.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Событийные концертные программы",
+    "src": "img/services/service-item-4.jpg",
+    "href": "#"
+  },
+  {
+    "title": "День рождения",
+    "src": "img/services/service-item-5.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Флешмоб на праздник",
+    "src": "img/services/service-item-6.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Выездная регистрация",
+    "src": "img/services/service-item-7.jpg",
+    "href": "#"
+  },
+  {
+    "title": "Выпускной бал",
+    "src": "img/services/service-item-8.jpg",
+    "href": "#"
+  }
+]

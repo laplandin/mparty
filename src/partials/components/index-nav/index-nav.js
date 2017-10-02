@@ -13,7 +13,7 @@ $(document).on('render', function() {
 
 
 function equalNav() {
-    var h = $('.content-wrapper')[0].scrollHeight;
+    var h = $('.content-wrapper').outerHeight();
     $('.index-nav-wrapper').outerHeight(h);
     console.log('42');
 }

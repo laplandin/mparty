@@ -21,6 +21,21 @@
 
     pointer-events: none;
   }
+
+  &--alt-decor {
+    &::before {
+      .pseudo();
+      width: 622px;
+      height: 666px;
+      bottom: 130px;
+      left: 0;
+
+      background: url('../img/services-decor.png') no-repeat left top;
+      z-index: 1100;
+
+      pointer-events: none;
+    }
+  }
 }
 
 .index-nav__logo {

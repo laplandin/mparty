@@ -83,10 +83,11 @@ gulp.task('ttf2woff', function(){
 });
 
 var repertoireData = require('./src/model/repertoire-items.json');
+var serviceData = require('./src/model/service-item.json');
 
 gulp.task('html:build', function() {
    return gulp.src('./src/*.hbs') //выбор фалов по нужному пути
-        .pipe(handlebarsCompile({repertoire: repertoireData}, {
+        .pipe(handlebarsCompile({repertoire: repertoireData, service: serviceData}, {
             ignorePartials: true,
             batch: ['./src/partials']
         }))

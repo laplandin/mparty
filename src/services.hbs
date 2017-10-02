@@ -1,0 +1,31 @@
+{{#> layouts/base title="Репертуар"}}
+    {{#*inline "content-block"}}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    {{> components/index-nav/index-nav}}
+                    {{> components/socials/socials}}
+                </div>
+                <div class="col-xs-10 content-wrapper content-wrapper--services">
+                    <div class="row services-list">
+                        <div class="services-list__mask"></div>
+                        {{#each service}}
+                            {{> components/service-item/service-item content=this}}
+                        {{/each}}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-7">
+                            {{> components/index-article/index-article title='Творческое наполнение вашего события' text='M-PARTY- центр подпитки положительными эмоциями! Это невероятный приобретенный организационный опыт. Слаженная команда режиссеров, постановщиков , звукооператоров, осветителей, ведущих, музыкантов , обьединенных под одним брендом. Это всегда качественные мероприятия! Каждое из них отличается особым подходом и незабываемым подчерком. У нас вы всегда  найдете для себя что-то необычное и запоминающееся !  Это 16 лет творческого пути. Более 1000 проведенных мероприятий, концертов, свадеб, дней рождений,выпускных балов. Это выступления по всей России и за рубежом. Стоит только набрать номер…'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="js/templates.js"></script>
+    {{/inline}}
+{{/layouts/base}}
