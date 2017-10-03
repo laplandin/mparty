@@ -11,7 +11,11 @@ $(document).on('render', function() {
     $('img').on('load', equalNav);
 });
 
-if (window.location.pathname === '/' || window.location.href.match('repertoire')) {
+if (window.location.pathname === '/') {
+    $('.index-nav-wrapper').addClass('index-nav-wrapper--prime-decor');
+}
+
+if ( window.location.href.match('repertoire')) {
     $('.index-nav-wrapper').addClass('index-nav-wrapper--prime-decor');
 }
 
