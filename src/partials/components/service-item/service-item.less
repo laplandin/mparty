@@ -14,6 +14,14 @@
   transform: skewY(5deg);
 }
 
+.service-item__link {
+  cursor: default;
+
+  &:hover .service-item__bg {
+    transform: skew(5deg) scale(1.2);
+  }
+}
+
 .service-item {
   position: relative;
   height: 550px;
@@ -93,6 +101,7 @@
   width: 100%;
   height: auto;
 
+  transition: transform .2s ease;
   transform: skew(5deg) scale(1.15);
 }
 
