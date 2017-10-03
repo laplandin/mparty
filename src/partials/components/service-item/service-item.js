@@ -5,8 +5,6 @@
         $(window).on('resize', function() {
            calcMaskHeight();
         });
-
-        $('.index-nav-wrapper').addClass('index-nav-wrapper--alt-decor');
     }
     function calcMaskHeight () {
         var mask = $('.services-list__mask');

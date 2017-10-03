@@ -1,0 +1,38 @@
+.poster-banner-wrapper {
+  padding: 0;
+  margin-bottom: 80px;
+  height: calc(~'120vh + 100px');
+
+  background: url('../img/poster-banner.jpg') no-repeat center top;
+  background-size: cover;
+
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+.poster-banner {
+  padding: 10vh 10%;
+
+  text-align: right;
+  text-transform: uppercase;
+  color: @white;
+
+  .primary-btn {
+    display: inline-block;
+    min-width: 20%;
+  }
+}
+
+.poster-banner__title {
+  .font(@fira-sans, 3.6em, 1.1em, 700);
+  margin-bottom: 30px;
+}
+
+.poster-banner__schedule {
+  .font(@fira-sans, 2em, 1em, 400);
+  margin-bottom: 70px;
+}
+
+.poster-banner__features {
+  .font(@fira-sans, 2.4em, 3em, 400);
+}

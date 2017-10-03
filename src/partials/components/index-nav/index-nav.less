@@ -10,16 +10,18 @@
 
   box-sizing: border-box;
 
-  &::before {
-    .pseudo();
-    width: 413px;
-    height: 666px;
-    bottom: 130px;
-    left: 0;
-    background: url('../img/index-decor.png') no-repeat left top;
-    z-index: 1100;
+  &--prime-decor {
+    &::before {
+      .pseudo();
+      width: 413px;
+      height: 666px;
+      bottom: 130px;
+      left: 0;
+      background: url('../img/index-decor.png') no-repeat left top;
+      z-index: 1100;
 
-    pointer-events: none;
+      pointer-events: none;
+    }
   }
 
   &--alt-decor {
@@ -34,6 +36,12 @@
       z-index: 1100;
 
       pointer-events: none;
+    }
+  }
+
+  &--none-decor {
+    &::before {
+      display: none;
     }
   }
 }

@@ -1,0 +1,115 @@
+.table    { display: table }
+.tr       { display: table-row }
+.thead    { display: table-header-group }
+.tbody    { display: table-row-group }
+.tfoot    { display: table-footer-group }
+.col      { display: table-column }
+.colgroup { display: table-column-group }
+.td, th   { display: table-cell }
+.caption  { display: table-caption }
+
+.schedule__title {
+  text-align: right;
+  .font(@fira-sans, 2.3em, 1em, 700);
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.schedule__table {
+  font-size: 10px;
+  margin-bottom: 50px;
+
+  .table {
+    text-align: center;
+    vertical-align: middle;
+    table-layout: fixed;
+  }
+
+  .col {
+    width: 40%;
+    background-image: linear-gradient( 126deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%);
+  }
+
+  .thead {
+    .td {
+      color: @primary;
+      text-transform: uppercase;
+      .font(@fira-sans, 3em, 1em, 700);
+      border-style: solid;
+      border-width: 4px 2px 2px 2px;
+      border-color:  rgb(115,17,183);
+    }
+  }
+
+  .tbody .tr:last-of-type {
+    .td {
+      border-bottom-width: 4px;
+    }
+  }
+
+  .td {
+    height: 90px;
+    width: 12%;
+    text-align: center;
+    vertical-align: middle;
+
+    text-transform: uppercase;
+    .font(@fira-sans, 2.6em, 1em, 700);
+    color: @primary;
+
+    border: 2px solid  rgb(115,17,183);
+
+    &:last-of-type {
+      border-right-width: 4px;
+    }
+
+    &--white {
+      .font(@fira-sans, 2.4em, 1em, 700);
+      color: @white;
+      border-width: 2px;
+      border-style: solid;
+      border-image:
+              linear-gradient( 90deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%) 1 0 1 0;
+    }
+    &.cross-out {
+      border-width: 4px 0 2px 0;
+      border-style: solid;
+      border-image:
+              linear-gradient( 90deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%) 2 0 2 0;
+    }
+  }
+
+  .cross-out {
+    position: relative;
+
+    .mask {
+      top: 0;
+      right: 0;
+
+      width: 0;
+      height: 0;
+
+      border-style: solid;
+      border-width: 0 90px 90px 0;
+      border-color: transparent #ffffff transparent transparent;
+    }
+  }
+
+  .span--top {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    .font(@fira-sans, 2rem, 1rem, 400);
+    color: @primary;
+  }
+
+  .span--bottom {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+
+    .font(@fira-sans, 2rem, 1rem, 400);
+    color: @white;
+  }
+}
