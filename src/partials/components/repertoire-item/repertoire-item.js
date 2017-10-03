@@ -3,10 +3,8 @@
     $(window).on('load', function() {
 
         if (window.location.href.match(/repertoire/)) {
-
-            $(window).on('load resize', function() {
-                calcItem();
-            });
+            $(calcItem);
+            $(window).on('resize', calcItem);
 
             $('.repertoire-item__image').on('click', function() {
                 var slider = $(this).closest('.repertoire-item__slider');
@@ -60,7 +58,6 @@
                 var currentImg = slider.find('img');
                 var currentSrc = currentImg.attr('src');
                 var index = + $(this).closest('.repertoire-item__slider-toggles-list').find('li').index(this) + 1;
-                console.log(currentImg);
 
                 var srcArr = currentSrc.split('.');
                 srcArr[0] = srcArr[0].slice(0, -1) + index;
@@ -142,17 +139,13 @@
 
                 if (($(window).scrollTop() >= (($(document).height() - $(window).height()) * 0.7)) && isFired) {
                     isFired = false;
-
                     var currentItem = getItemsNumber();
-                    console.log(currentItem);
-                    console.log(App.templates.repertoire.item(data));
 
                     data.forEach(function(item) {
                         $('.repertoire-list').append(App.templates.repertoire.item(item));
                     });
 
                     $(this).trigger('render');
-                    console.log($(this));
                     calcItem();
                 }
             });
