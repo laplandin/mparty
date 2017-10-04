@@ -2,7 +2,7 @@
     <div class="repertoire-item__info">
         <h3 class="repertoire-item__title">{{content.title}}</h3>
         <p class="repertoire-item__text">{{content.text}}</p>
-        <a href="{{content.link}}" class="repertoire-item__link">Посмотреть видео</a>
+        {{> components/secondary-btn/secondary-btn href=content.link title='Посмотреть видео'}}
     </div>
     <div class="repertoire-item__slider" data-image="0">
         <img class="repertoire-item__image" src="img/repertoire/{{content.src}}" alt="">

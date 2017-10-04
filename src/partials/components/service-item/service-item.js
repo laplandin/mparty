@@ -5,10 +5,6 @@
         $(window).on('resize', function() {
            calcMaskHeight();
         });
-
-        $('.service-item__link').on('click', function(e) {
-           e.preventDefault();
-        });
     }
     function calcMaskHeight () {
         var mask = $('.services-list__mask');

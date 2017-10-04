@@ -1,0 +1,58 @@
+.video-card {
+  width: 50%;
+  float: left;
+
+  &:nth-of-type(odd) {
+    padding-right: 7.5px;
+  }
+
+  &:nth-of-type(even) {
+    padding-left: 7.5px;
+  }
+}
+
+.video-card__poster-wrapper {
+  position: relative;
+
+  &:hover::before {
+    .pseudo();
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0, 0.5);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  &:hover::after {
+    .pseudo();
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 35px 0 35px 50px;
+    border-color: transparent transparent transparent #ffffff;
+    transform: translate(-36%, -50%);
+    cursor: pointer;
+  }
+}
+
+.video-card__poster {
+  width: 100%;
+}
+
+.video-card__info {
+  margin: 20px 0;
+  text-align: right;
+}
+
+.video-card__info-name {
+  .font(@fira-sans, 2em, 1em, 700);
+}
+
+.video-card__info-date {
+  .font(@fira-sans, 2em, 1em, 300);
+}

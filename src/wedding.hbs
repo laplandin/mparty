@@ -1,0 +1,39 @@
+{{#> layouts/base title="Свадьба"}}
+    {{#* inline "nav"}}
+        {{> components/nav}}
+    {{/inline}}
+
+    {{#*inline "content-block"}}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    <div class="nav-content-wrapper">
+                        {{> components/index-nav/index-nav}}
+                        {{> components/socials/socials}}
+                    </div>
+                </div>
+                <div class="col-xs-10 content-wrapper content-wrapper--service-item">
+                    <div class="row">
+                        {{> components/banner/banner title='Свадьба' bg='wedding'}}
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-2">
+                            {{> components/index-article/index-article title='Свадьба с M-PARTY' text='Свадьба – это праздник для всех ! Для молодоженов, как самых счастливых людей, нашедших любовь . для родителей – радующихся счастью детей. Для гостей – разделяющих событие в возможности отлично и запоминающе провести время.  это веселье, смех, подарки, поздравления и пожелания, игры, песни и танцы, шумная компания, угощение и сюрпризы! Это настроение в которое погружаешься с головой. Это особая атмосфера созданная из продуманных и важных  мелочей: традиций, стильных подарков и комплиментов , импровизаций, любимой музыки, внимательных  сюрпризов , зрелищных моментов! На свадьбе Очень хочется каждую минуту сохранить в памяти и переживать ее  вновь и вновь! Поэтому свадьбы наполняют запоминающимися сюрпризами , выступлениями артистов, перфомансами, флешмобами. Шоу – балет лучше всего справится с такими задачами и запросто создаст  нужную атмосферу романтики, чувственности либо безудержного веселья , увлекая вас в танце!'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{> components/video-feed/video-feed}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="js/templates.js"></script>
+    {{/inline}}
+{{/layouts/base}}
