@@ -1,6 +1,6 @@
 .poster-banner-wrapper {
   padding: 0;
-  margin-bottom: 80px;
+  margin-bottom:10vh;
   height: calc(~'120vh + 100px');
 
   background: url('../img/poster-banner.jpg') no-repeat center top;
@@ -35,4 +35,23 @@
 
 .poster-banner__features {
   .font(@fira-sans, 2.4em, 3em, 400);
+}
+
+.poster-banner__contacts {
+  position: absolute;
+  text-transform: none;
+  text-align: left;
+  bottom: 15vh;
+  left: 15%;
+  .font(@fira-sans, 2em, 1.1em, 400);
+  color: @white;
+
+  a {
+    color: @white;
+    &:hover {
+      text-decoration: none;
+      color: @white;
+      cursor: pointer;
+    }
+  }
 }

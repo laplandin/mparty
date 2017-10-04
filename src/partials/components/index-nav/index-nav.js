@@ -15,10 +15,6 @@ if (window.location.pathname === '/') {
     $('.index-nav-wrapper').addClass('index-nav-wrapper--prime-decor');
 }
 
-if ( window.location.href.match('repertoire')) {
-    $('.index-nav-wrapper').addClass('index-nav-wrapper--prime-decor');
-}
-
 if (window.location.href.match(/service/)) {
     $('.index-nav-wrapper').addClass('index-nav-wrapper--alt-decor');
 }

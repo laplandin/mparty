@@ -15,10 +15,10 @@
 }
 
 .service-item__link {
-  cursor: default;
+  cursor: pointer;
 
   &:hover .service-item__bg {
-    transform: skew(5deg) scale(1.2);
+    transform: skewY(5deg) scale(1.2);
   }
 }
 
@@ -30,8 +30,12 @@
   margin-bottom: 24px;
   overflow: hidden;
 
+  @media @lg-desktop {
+    height: 490px;
+  }
+
   @media @md-desktop {
-    height: 385px;
+    height: 360px;
   }
 
   &:nth-of-type(even) {
@@ -45,13 +49,18 @@
   &:nth-of-type(1),
   &:nth-of-type(2) {
     height: 640px;
+
+    @media @lg-desktop {
+      height: 500px;
+    }
+
     @media @md-desktop {
-      height: 430px;
+      height: 360px;
     }
   }
 
   &:nth-of-type(1) .service-item__title {
-    max-width: 50%;
+    max-width: 60%;
     text-align: right;
     top: 15%;
       @media @md-desktop {
@@ -59,10 +68,16 @@
       }
   }
 
-  &:nth-of-type(2) .service-item__title {
-    top: 30%;
-    @media @md-desktop {
-      top: 22%;
+  &:nth-of-type(2) {
+    .service-item__bg {
+      margin-top: 15%;
+    }
+
+    .service-item__title {
+      top: 30%;
+      @media @md-desktop {
+        top: 22%;
+      }
     }
   }
 
@@ -75,10 +90,11 @@
 
   &:nth-of-type(4) .service-item__title {
     text-align: right;
+    max-width: 50%;
   }
 
   &:nth-of-type(6) .service-item__title {
-    max-width: 50%;
+    max-width: 80%;
     right: auto;
     top: auto;
     bottom: 30px;
@@ -102,13 +118,13 @@
   height: auto;
 
   transition: transform .2s ease;
-  transform: skew(5deg) scale(1.15);
+  transform: skewY(5deg) scale(1.15);
 }
 
 .service-item__title {
   color: @white;
   position: absolute;
-  top: 10px;
+  top: 30px;
   right: 9%;
   z-index: 100;
 
