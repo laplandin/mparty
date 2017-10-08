@@ -1,0 +1,129 @@
+.order-form {
+  display: none;
+}
+
+.order-form__input-wrapper {
+  width: 100%;
+  position: relative;
+}
+
+.order-form__title {
+  margin-bottom: 30px;
+}
+
+.order-form__input {
+  width: 100%;
+  height: 60px;
+  padding-top: 1em;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 2px solid black;
+  .font(@fira-sans, 2em, 1em, 400);
+
+  &:focus {
+    border-bottom: 2px solid @secondary;
+    outline: none;
+  }
+}
+
+.order-form__label {
+  position: absolute;
+  padding-left: 4px;
+
+  transform: translate3d(0, 34px,0) scale(1);
+
+  margin-bottom: 4px;
+  .font(@fira-sans, 2em, 1em, 400);
+
+  cursor: text;
+
+  transition: transform .4s cubic-bezier(.25,.8,.25,1),
+  width .4s cubic-bezier(.25,.8,.25,1),
+  -webkit-transform .4s cubic-bezier(.25,.8,.25,1),
+  top .4s cubic-bezier(.25,.8,.25,1);
+  transform-origin: left top;
+  -webkit-font-smoothing: antialiased;
+  -webkit-transform-origin: left top;
+
+  &--focused {
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 0, 0) scale(.75);
+
+    color: @secondary;
+  }
+}
+
+.order-form__label-file {
+  position: relative;
+  margin-top: 20px;
+  //margin-bottom: 40px;
+  padding-left: 50px;
+  cursor: pointer;
+
+  &::before {
+    .pseudo();
+    top: -50%;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: url("../img/attached-files.svg") no-repeat center left;
+    background-size: contain;
+  }
+
+  span {
+    padding-left: 10px;
+    .font(@fira-sans, 2em, 2em, 400);
+    text-decoration: underline;
+    transition: color .2s ease-in-out;
+
+    &:hover {
+      color: @secondary;
+    }
+  }
+}
+
+.order-form__textarea {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 80px;
+  border: none;
+  border-bottom: 2px solid black;
+  .font(@fira-sans, 2em, 1.2em, 400);
+  padding-top: 22px;
+  transition: height .2s linear, margin .2s linear;
+
+  &:focus {
+    border-bottom: 2px solid @secondary;
+    outline: none;
+    margin-bottom: 20px;
+    height: 120px;
+  }
+}
+
+.order-form__file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.order-form__agreement {
+  .font(@fira-sans, 1.6em, 1em, 400);
+  margin: 20px 0 0 15px;
+}
+
+.order-form__submit {
+  align-self: center;
+  margin-top: 20px;
+  width: 300px;
+  padding: 10px 60px;
+
+  text-transform: uppercase;
+
+  border: none;
+
+  cursor: pointer;
+}

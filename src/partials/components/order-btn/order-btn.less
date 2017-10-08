@@ -1,0 +1,26 @@
+.order-btn {
+  display: inline-block;
+  padding: 15px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  .font(@fira-book, 2em, 1em, 400);
+  color: @white;
+
+  background-image: linear-gradient( -121deg, rgb(255,129,49) 0%, rgb(255,196,38) 100%);
+  transition: background .2s linear;
+
+  &:hover {
+    color: @white;
+    text-decoration: none;
+    background-image: linear-gradient( -121deg, rgb(255,129,49) 30%, rgb(255,196,38) 100%);
+  }
+
+  &:visited,
+  &:active,
+  &:focus {
+    color: @white;
+    text-decoration: none;
+  }
+}

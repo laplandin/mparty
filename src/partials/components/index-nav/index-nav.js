@@ -3,7 +3,7 @@ $(document).ready(function() {
 });
 
 $(window).on('resize', function() {
-    console.log('resize');
+    console.log('>>>resize');
     equalNav();
 });
 

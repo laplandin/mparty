@@ -1,0 +1,143 @@
+#calendar {
+  position: relative;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1.2em;
+  text-align: center;
+  margin-bottom: 50px;
+
+  z-index: 1;
+
+  .calendar__month-toggle {
+    color: @primary;
+  }
+
+  .tr {
+    position: relative;
+    z-index: 1;
+
+    &:nth-child(even) {
+      background-color: lighten(@primary, 40);
+    }
+  }
+
+  .tbody .td {
+    position: relative;
+    z-index: 1;
+    height: 60px;
+    .font(@fira-sans, 2em, 1em, 400);
+    vertical-align: middle;
+
+    &--available {
+      cursor: pointer;
+    }
+
+    &--choosen {
+      background-color: lighten(@secondary, 50);
+    }
+
+    &--today {
+      background: rgba(220, 0, 0, .2);
+      color: #fff;
+    }
+
+    span {
+      position: relative;
+      z-index: -1;
+    }
+  }
+
+  .calendar__days {
+    .td {
+      padding: 15px 0;
+      color: @primary;
+      text-transform: uppercase;
+      .font(@fira-sans, 3em, 1em, 700);
+    }
+  }
+
+  .tr--transparent .td{
+    background-color: @white;
+  }
+
+  .tbody .calendar__event {
+    z-index: 10;
+    color: @secondary;
+    border-bottom: 4px solid @secondary;
+    cursor: pointer;
+
+    transition: background-color .2s linear;
+
+    &:hover {
+      background-color: lighten(@secondary, 50);
+      z-index: 20;
+    }
+
+    &:hover .calendar__tooltip {
+      opacity: 1;
+    }
+  }
+
+  .calendar__event .calendar__tooltip {
+    display: block;
+    position: absolute;
+
+    text-align: left;
+    .font(@fira-sans, 1em, 1em, 400);
+
+    width: 200%;
+    height: auto;
+    right: -200%;
+    top: 0;
+    z-index: 100;
+    background-color: @white;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity .2s linear;
+  }
+
+}
+
+.calendar__active-month {
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  .font(@fira-sans, 3em, 1em, 700);
+}
+
+#calendar .tbody .td:nth-child(n+6),
+#calendar .holiday {
+  color: @primary;
+}
+
+.calendar__month-toggle {
+  font-size: 10em;
+  cursor: pointer;
+  width: 10%;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  span {
+    position: absolute;
+    top: 50%;
+  }
+
+  &--prev {
+    left: -10%;
+
+    span {
+      left: 0;
+    }
+  }
+
+  &--next {
+    right: -10%;
+
+    span {
+      right: 0;
+    }
+  }
+}
+
