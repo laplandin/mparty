@@ -3,7 +3,6 @@ $(document).ready(function() {
 });
 
 $(window).on('resize', function() {
-    console.log('>>>resize');
     equalNav();
 });
 
@@ -26,5 +25,4 @@ if (window.location.href.match(/poster/)) {
 function equalNav() {
     var h = $('.content-wrapper').outerHeight();
     $('.index-nav-wrapper').outerHeight(h);
-    console.log('42');
 }

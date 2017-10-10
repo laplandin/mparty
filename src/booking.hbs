@@ -21,19 +21,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-xs-offset-1 col-xs-10">
                             {{>components/order-form/order-form}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{> components/modal/modal title='Бронирование' text='Пожалуйста выберите одну дату для бронирования'}}
+        {{> components/modal/modal title='Бронирование' text='Пожалуйста выберите дату для бронирования'}}
         {{> components/index-footer/index-footer}}
     {{/inline}}
 
     {{#* inline "scripts-block"}}
-        <script src="plugins/parallax/parallax.min.js"></script>
+        <script src="plugins/maskedInput/masked.input.js"></script>
     {{/inline}}
 
 {{/layouts/base}}

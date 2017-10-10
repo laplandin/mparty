@@ -44,12 +44,10 @@
 
                     // переключатель минус месяц
                     $(selector + ' ' + calendarToggle + '--prev').click(function() {
-                        console.log('fire');
                         Calendar(selector, $(activeClass).data('year'), $(activeClass).data('month')-1);
                     });
                     // переключатель плюс месяц
                     $(selector + ' ' + calendarToggle + '--next').click(function() {
-                        console.log('fire');
                         Calendar(selector, $(activeClass).data('year'), $(activeClass).data('month')+1);
                     });
                 }
@@ -73,12 +71,23 @@
                                 calendar += '</div><div class="tr">';
                             }
                         } else {
-                            calendar += '<div class="td td--available">' + i + '</div>';
+                            if (i < new Date().getDate() && D.getMonth() <= new Date().getMonth()) {
+                                calendar += '<div class="td td--unavailable">' + i + '</div>';
+                            } else {
+                                calendar += '<div class="td td--available">' + i + '</div>';
+                            }
                             if (new Date(D.getFullYear(),D.getMonth(),i).getDay() === 0) {
                                 calendar += '</div><div class="tr">';
                             }
                         }
                     }
+
+                    if (new Date().getMonth() >= D.getMonth() && new Date().getFullYear() <= D.getFullYear()) {
+                        $('.calendar__month-toggle--prev').hide();
+                    } else {
+                        $('.calendar__month-toggle--prev').show();
+                    }
+
                     for(var  i = DNlast; i < 7; i++) calendar += '<div class="td">&nbsp;</div>';
                     var activeEl = $(activeClass)[0];
                     $(id + ' .tbody').html(calendar);
@@ -89,7 +98,18 @@
                         $(id+' .tbody').append('<div class="tr tr--transparent"><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>');
                     }
                     $(window).trigger('resize');
+                    checkSelected(D);
                     setBookHandlers();
+                }
+
+                function checkSelected (selectedDate) {
+                    if (Object.keys(bookedDay).length > 0) {
+                        var bookedDate = new Date(bookedDay.year, bookedDay.month - 1, bookedDay.day);
+                        if (bookedDate.getFullYear() === selectedDate.getFullYear() && bookedDate.getMonth() === selectedDate.getMonth()) {
+                            var eventCell = $(calendar + ' .tbody .td:contains(' + bookedDay.day + ')');
+                            eventCell.toggleClass('td--selected');
+                        }
+                    }
                 }
 
                 function setEvents() {
@@ -99,7 +119,6 @@
 
                     events.forEach(function(item, index, array) {
                        if (item.date.getFullYear() === currentYear && item.date.getMonth() === currentMonth) {
-                           console.log('found');
                            var eventCell = $(calendar + ' .tbody .td:contains(' + item.date.getDate() + ')');
                            eventCell.data("info", item.info)
                                .addClass('calendar__event')
@@ -122,11 +141,10 @@
                 }
 
                 function chooseEvent () {
-                    $(this).toggleClass('td--choosen');
-                    if ($(this).hasClass('calendar__event--choosen')) {
+                    $(this).toggleClass('td--selected');
+                    if ($(this).hasClass('calendar__event--selected')) {
                         bookedEvents = $(this).data('info');
                     }
-                    console.log(bookedEvents);
                 }
 
                 function setBookHandlers () {
@@ -134,28 +152,21 @@
                 }
 
                 function bookDate () {
-                    if (!$(this).hasClass('td--choosen')) {
-                        if (Object.keys(bookedDay).length > 0) {
-                            showLimitMessage();
-                            return;
-                        }
-                        var day = $(this).children('span').text();
+                    if (!$(this).hasClass('td--selected')) {
+                        $('.td--selected').removeClass('td--selected');
+                        var day = $(this).text();
                         bookedDay =  {
                             year: $(calendar + ' ' + activeClass).data('year'),
                             month: $(calendar + ' ' + activeClass).data('month') + 1,
-                            day: day
+                            day: Number(day)
                         };
-                        $(this).toggleClass('td--choosen');
+                        $(this).toggleClass('td--selected');
+                        inform('data-update', '.order-form', bookedDay);
                     } else {
                         bookedDay = {};
-                        $(this).toggleClass('td--choosen');
+                        inform('data-update', '.order-form', bookedDay);
+                        $(this).toggleClass('td--selected');
                     }
-                }
-
-                function showLimitMessage() {
-                    var modal = $('#modal');
-                    modal.find('.modal-body').text('Невозможно выбрать больше одной даты');
-                    modal.modal('show');
                 }
 
                 function getBookedDay () {
@@ -175,14 +186,25 @@
             orderBtn.on('click', function(e) {
                 e.preventDefault();
                 if (Object.keys(calendar.bookedDay()).length === 0) {
-                    var modal = $('#modal');
-                    modal.find('.modal-body').text('Для бронирования необходимо выбрать дату');
-                    modal.modal('show');
+                    showMessage();
                     return;
                 }
-                $('.order-form').trigger('order');
+                inform('order', '.order-form', calendar.bookedDay());
+                $(this).fadeOut();
             });
         }
 
     });
 // }());
+
+function inform(event, target, data) {
+    $(target).trigger(event, data);
+}
+
+function showMessage(message) {
+    var modal = $('#modal');
+    if (message && typeof message === 'string') {
+        modal.find('.modal-body').text(message);
+    }
+    modal.modal('show');
+}

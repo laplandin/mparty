@@ -1,31 +1,31 @@
 <form class="order-form" enctype="multipart/form-data" action="" method="POST" onsubmit="return false">
     <div class="row ">
-        <div class="col-md-12">
-            <div class="col-sm-12 order-form">
-                <div class="form-group">
-                    <h3 class="order-form__title text-uppercase">Как нам с вами связаться?</h3>
-                    <div class="order-form__input-wrapper">
-                        <label for="order-form__name" class="order-form__label">Ваше имя</label>
-                        <input type="text" class="order-form__input" id="order-form__name" name="username" required>
-                    </div>
-                    <div class="order-form__input-wrapper">
-                        <label for="order-form__phone" class="order-form__label">Ваш телефон</label>
-                        <input type="text" class="order-form__input" id="order-form__phone" name="userphone" required>
-                    </div>
-                    <div class="order-form__input-wrapper">
-                        <label for="order-form__textarea" class="order-form__label">Ваш комментарий</label>
-                        <textarea class="order-form__textarea" id="order-form__textarea" name="userphone"></textarea>
-                    </div>
-                    <p class="order-form__agreement">* Отправляя форму, вы даете согласие на обработку своих персональных данных, а также принимаете условия
-                        <a href="/agreement.html">Соглашения об использовании сайта</a>.
-                    </p>
+        <div class="col-xs-12 order-form">
+            <div class="form-group">
+                <h3 class="order-form__title text-uppercase">Как нам с вами связаться?</h3>
+                <div class="order-form__input-wrapper">
+                    <label for="order-form__name" class="order-form__label">Ваше имя</label>
+                    <input type="text" class="order-form__input" id="order-form__name" name="username" required>
                 </div>
+                <div class="order-form__input-wrapper">
+                    <label for="order-form__phone" class="order-form__label">Ваш телефон</label>
+                    <input type="text" class="order-form__input" id="order-form__phone" name="userphone" required>
+                </div>
+                <div class="order-form__input-wrapper">
+                    <label for="order-form__textarea" class="order-form__label">Ваш комментарий</label>
+                    <textarea class="order-form__textarea" id="order-form__textarea" name="userphone"></textarea>
+                </div>
+                <p class="order-form__agreement">* Отправляя форму, вы даете согласие на обработку своих персональных данных, а также принимаете условия
+                    <a href="/agreement.html">Соглашения об использовании сайта</a>.
+                </p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-sm-4">
-            <input type="submit" class="primary-btn"  id="callback_form" onclick="return false" value="Отправить">
+        <div class="col-xs-3 col-xs-offset-9">
+            <div class="order-form__submit">
+                {{> components/secondary-btn/secondary-btn title='отправить' href='#'}}
+            </div>
         </div>
     </div>
 </form>
