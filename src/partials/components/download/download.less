@@ -1,0 +1,30 @@
+.download {
+  display: block;
+  height: 60px;
+  position: relative;
+  margin-top: 70px;
+
+  padding-top: 20px;
+  padding-left: 70px;
+  .font(@fira-sans, 1.8em, 1.1em, 400);
+  text-transform: uppercase;
+  color: #00abbf;
+
+  transition: color .2s linear;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: @secondary;
+  }
+
+  &::before {
+    .pseudo();
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 60px;
+    background: url('../img/download-icon.png') no-repeat left center;
+  }
+}

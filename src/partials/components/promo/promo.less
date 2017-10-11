@@ -3,6 +3,14 @@
   height: 75vh;
   transform: skewY(-5deg);
   overflow: hidden;
+
+  &--inverse {
+    transform: skewY(5deg);
+
+    img {
+      transform: skewY(-5deg) translateY(-15%);
+    }
+  }
 }
 
 .promo__img {

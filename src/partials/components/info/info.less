@@ -1,0 +1,15 @@
+.info {
+  margin: 70px 0;
+  .font(@fira-sans, 1.7em, 1.5em, 400);
+}
+
+.info__features {
+  display: list-item;
+  margin-bottom: 1.5em;
+  list-style-type: none;
+  &::before {
+    content:  "—";
+    position: relative;
+    left:     -5px;
+  }
+}

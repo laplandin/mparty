@@ -1,0 +1,50 @@
+{{#> layouts/base title="Свадьба"}}
+    {{#* inline "nav"}}
+        {{> components/nav}}
+    {{/inline}}
+
+    {{#*inline "content-block"}}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    <div class="nav-content-wrapper">
+                        {{> components/index-nav/index-nav}}
+                        {{> components/socials/socials}}
+                    </div>
+                </div>
+                <div class="col-xs-10 content-wrapper content-wrapper--competition">
+                    <div class="row">
+                        <div class="competition-poster">
+                            {{> components/scene-prlx/scene-prlx}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-2">
+                            {{> components/index-article/index-article
+                                title='Региональный конкурс- праздник детского хореографического искусства «Вершины Успеха »'
+                                text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aliquam architecto assumenda at atque aut beatae consectetur culpa cupiditate debitis dicta ea eius eligendi eos et excepturi exercitationem impedit in inventore minima minus molestias necessitatibus nostrum officiis, perspiciatis praesentium, quas quo quos repellat repellendus sint soluta sunt temporibus! Error, illum.'
+                            }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="promo promo--inverse">
+                            <img src="img/prises.jpg" alt="Призы" class="promo__img">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-xs-offset-1">
+                            {{> components/secondary-btn/secondary-btn title='Посмотреть видео'}}
+                            <a href="#" class="download">Скачать положение о конкурсе</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+        {{> components/modal/modal title='Запись в школу' text=''}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script src="plugins/parallax/parallax.min.js"></script>
+    {{/inline}}
+{{/layouts/base}}

@@ -1,7 +1,8 @@
 (function () {
     $(window).on('load', function() {
 
-        if (window.location.pathname.match(/repertoire/)) {
+        if ($('svg.banner__mask').length) {
+            setMaskHeight();
 
             $(window).on('resize', function () {
                setMaskHeight();

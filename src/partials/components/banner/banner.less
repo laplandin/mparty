@@ -37,6 +37,13 @@
 
   &--compere{
     background: url('../img/banner-compere.jpg') no-repeat center top;
+    margin-bottom: 0;
+  }
+
+  &--competition{
+    background: url('../img/banner-success-top.jpg') no-repeat left top;
+    margin-bottom: 0;
+    background-size: contain !important;
   }
 }
 
@@ -61,6 +68,8 @@
   pointer-events: none;
 
   z-index: 100;
+
+  transition: bottom .4s ease;
 }
 
 .banner__title {
@@ -74,11 +83,12 @@
 .banner__mask {
   position: absolute;
   bottom: 0;
+
+  transition: height .4s ease;
 }
 
 .banner__scene {
   height: 430px;
-  //top: -140px;
   z-index: 1100;
   width: 100%;
   position: absolute !important;
