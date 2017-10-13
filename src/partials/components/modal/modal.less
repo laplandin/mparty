@@ -1,10 +1,49 @@
 #modal {
 
-  .modal-title {
-    .font(@fira-sans, 1.5em, 1em, 700)
+  .modal-body {
+    padding: 5% 15% 10%;
+    background-image: linear-gradient( -62deg, rgb(255,129,28) 0%, rgb(236,43,102) 100%);
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 3em;
+    }
   }
 
-  .modal-body {
-    .font(@fira-sans, 1.5em, 1em, 400)
+  .modal__input {
+    height: 60px;
+    padding: 0 10px;
+    width: 100%;
+
+    .font(@fira-sans, 2.4em, 1em, 700);
+
+    margin-bottom: 30px;
+
+    &:last-of-type {
+      margin-bottom: 50px;
+    }
+  }
+
+  .modal__title {
+    text-transform: uppercase;
+    color: @white;
+    .font(@fira-sans, 2em, 1em, 700);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .modal__text {
+    text-transform: uppercase;
+    color: @white;
+    text-align: center;
+    .font(@fira-sans, 1.5em, 1em, 700);
+    margin-bottom: 40px;
+  }
+
+  .primary-btn {
+    display: inline-block;
+    width: 100%;
   }
 }

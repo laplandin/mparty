@@ -6,7 +6,6 @@
             showMessage(validateResult.message);
             return false;
         }
-        console.log(validateResult.data);
         $.ajax({
             type: 'post',
             url:'post_callback.php',
@@ -27,7 +26,7 @@
         var nameNumber = normalizedName.split(' ').length; //число слов в строке
         var phoneReg = /^\+?\d{1}-?\d{3,4}-\d{3}-\d{2}-\d{2}$|^\+?\d{11}$/;
         var phoneNumber = phone.val();
-        var textComment = $('#order-from__textarea').val() || '';
+        var textComment = $('#order-form__textarea').val() || '';
 
         if (Object.keys(bookedInfo).length === 0) return {success:false, message: 'Пожалуйста выберите дату'};
         if (normalizedName === '') return {success: false, message: 'Пожалуйста заполните поле "Имя"'};

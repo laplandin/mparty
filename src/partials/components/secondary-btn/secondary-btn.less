@@ -2,17 +2,20 @@
   display: inline-block;
   width: 100%;
   padding: 12px 5px 10px;
-  background-image: linear-gradient( -121deg, rgb(0,168,255) 0%, rgb(124,255,28) 100%);
+  background-size: 200% auto;
+  background-image: linear-gradient( to left, rgb(0,168,255) 0%, rgb(124,255,28) 51%, rgb(0,168,255) 100%);
   color: @white;
   .font(@fira-book, 2.4em, 1.1em, 400);
   text-transform: uppercase;
   text-align: center;
+  transition: background-position .4s ease;
 
   @media @md-desktop {
     padding: 8px 2px 6px;
   }
 
   &:hover {
+    background-position: right center;
     color: @white;
     text-decoration: none;
   }

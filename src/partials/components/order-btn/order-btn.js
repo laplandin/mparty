@@ -1,5 +1,8 @@
 (function () {
-  if ($('#calendar').length) {
-
+  if ($('.order-btn--modal').length) {
+      $('.order-btn--modal').on('click', function(event) {
+          event.preventDefault();
+          showMessage();
+      });
   }
 }());

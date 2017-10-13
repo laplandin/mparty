@@ -2,18 +2,28 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Заголовок модального окна -->
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">{{title}}</h4>
-            </div>
+            {{!--<div class="modal-header">--}}
+
+            {{!--<h4 class="modal-title">{{title}}</h4>--}}
+            {{!--</div>--}}
             <!-- Основное содержимое модального окна -->
             <div class="modal-body">
-                {{text}}
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                <h4 class="modal__title">{{title}}</h4>
+                {{#if enroll}}
+                    <input class="modal__input modal__input--name" type="text" placeholder="имя">
+                    <input class="modal__input modal__input--phone" type="text" placeholder="телефон">
+                    {{> components/primary-btn/primary-btn value='Отправить' href='#' action='submit' target='form'}}
+                {{else}}
+                    <p class="modal__text">{{text}}</p>
+                    {{> components/primary-btn/primary-btn value='Закрыть' href='#' action='dismiss' target='modal'}}
+                {{/if}}
             </div>
             <!-- Футер модального окна -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-            </div>
+            {{!--<div class="modal-footer">--}}
+
+            {{!--</div>--}}
         </div>
     </div>
 </div>

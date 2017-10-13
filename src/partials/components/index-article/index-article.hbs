@@ -1,5 +1,9 @@
 <article class="index-article">
     {{> components/article-title/article-title this}}
     <p class="index-article__text {{#if mod}} index-article__text--{{mod}} {{/if}}">{{{text}}}</p>
-    {{> components/order-btn/order-btn href='#' value='Заказать артистов'}}
+    {{#if enroll}}
+        {{> components/order-btn/order-btn href='#' value='Подать заявку' action='modal'}}
+    {{else}}
+        {{> components/order-btn/order-btn href='#' value='Заказать артистов'}}
+    {{/if}}
 </article>
