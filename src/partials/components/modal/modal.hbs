@@ -1,29 +1,25 @@
 <div id="modal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <!-- Заголовок модального окна -->
-            {{!--<div class="modal-header">--}}
-
-            {{!--<h4 class="modal-title">{{title}}</h4>--}}
-            {{!--</div>--}}
-            <!-- Основное содержимое модального окна -->
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 
                 <h4 class="modal__title">{{title}}</h4>
                 {{#if enroll}}
-                    <input class="modal__input modal__input--name" type="text" placeholder="имя">
-                    <input class="modal__input modal__input--phone" type="text" placeholder="телефон">
+                    <form id="modal-form" action="{{action}}">
+                        <div class="modal__input-wrapper">
+                            <input class="modal__input modal__input--name" name="name" type="text" placeholder="имя">
+                        </div>
+                        <div class="modal__input-wrapper">
+                            <input class="modal__input modal__input--phone" name="phone" type="text" placeholder="телефон">
+                        </div>
+                    </form>
                     {{> components/primary-btn/primary-btn value='Отправить' href='#' action='submit' target='form'}}
                 {{else}}
                     <p class="modal__text">{{text}}</p>
                     {{> components/primary-btn/primary-btn value='Закрыть' href='#' action='dismiss' target='modal'}}
                 {{/if}}
             </div>
-            <!-- Футер модального окна -->
-            {{!--<div class="modal-footer">--}}
-
-            {{!--</div>--}}
         </div>
     </div>
 </div>

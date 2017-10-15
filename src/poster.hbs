@@ -31,6 +31,7 @@
             </div>
         </div>
         {{> components/index-footer/index-footer}}
+        {{> components/modal/modal title='Запись в школу' enroll=true action='school_callback.php'}}
     {{/inline}}
 
     {{#* inline "footer-block"}}
@@ -39,6 +40,8 @@
 
     {{#* inline "scripts-block"}}
         <script src="plugins/parallax/parallax.min.js"></script>
+        <script src="plugins/maskedInput/masked.input.js"></script>
+        <script src="plugins/jqueryValidate/jquery.validate.js"></script>
     {{/inline}}
 
 {{/layouts/base}}

@@ -2,14 +2,14 @@
     <div class="repertoire-item__info">
         <h3 class="repertoire-item__title">{{this.title}}</h3>
         <p class="repertoire-item__text">{{this.text}}</p>
-        <a href="{{this.link}}" class="repertoire-item__link">Посмотреть видео</a>
+        <a href="{{this.link}}" class="secondary-btn">Посмотреть видео</a>
     </div>
     <div class="repertoire-item__slider" data-image="0">
         <img class="repertoire-item__image" src="img/repertoire/{{this.src}}" alt="">
         <ul class="repertoire-item__slider-toggles-list">
-            <li class="repertoire-item__slider-toggle repertoire-item__slider-toggle--active"></li>
-            <li class="repertoire-item__slider-toggle"></li>
-            <li class="repertoire-item__slider-toggle"></li>
+            {{#times this.count}}
+                <li class="repertoire-item__slider-toggle {{set_active ../index}}"></li>
+            {{/times}}
         </ul>
         <div class="preload-juggle">
             <div class="ball"></div>

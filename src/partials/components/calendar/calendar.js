@@ -71,7 +71,7 @@
                                 calendar += '</div><div class="tr">';
                             }
                         } else {
-                            if (i < new Date().getDate() && D.getMonth() <= new Date().getMonth()) {
+                            if (i < new Date().getDate() && D.getMonth() <= new Date().getMonth() && D.getFullYear() === new Date().getFullYear()) {
                                 calendar += '<div class="td td--unavailable">' + i + '</div>';
                             } else {
                                 calendar += '<div class="td td--available">' + i + '</div>';
@@ -82,7 +82,7 @@
                         }
                     }
 
-                    if (new Date().getMonth() >= D.getMonth() && new Date().getFullYear() <= D.getFullYear()) {
+                    if (new Date().getMonth() >= D.getMonth() && new Date().getFullYear() === D.getFullYear()) {
                         $('.calendar__month-toggle--prev').hide();
                     } else {
                         $('.calendar__month-toggle--prev').show();
@@ -199,12 +199,4 @@
 
 function inform(event, target, data) {
     $(target).trigger(event, data);
-}
-
-function showMessage(message) {
-    var modal = $('#modal');
-    if (message && typeof message === 'string') {
-        modal.find('.modal-body').text(message);
-    }
-    modal.modal('show');
 }

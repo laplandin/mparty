@@ -9,7 +9,6 @@ var  cssmin = require('gulp-clean-css');
 var  imagemin = require('gulp-imagemin');
 var  pngquant = require('imagemin-pngquant');
 var  browserSync = require("browser-sync");
-// var  rigger = require('gulp-rigger');
 var  reload = browserSync.reload;
 var  rimraf = require('rimraf');
 var  plumber = require('gulp-plumber');
@@ -24,7 +23,6 @@ var ttf2woff = require('gulp-ttf2woff');
 var wrap       = require('gulp-wrap');
 var handlebars = require('gulp-handlebars');
 var declare    = require('gulp-declare');
-// var  ignore = require('gulp-ignore');
 
 var path = {
     build: {
@@ -89,7 +87,19 @@ gulp.task('html:build', function() {
    return gulp.src('./src/*.hbs') //выбор фалов по нужному пути
         .pipe(handlebarsCompile({repertoire: repertoireData, service: serviceData}, {
             ignorePartials: true,
-            batch: ['./src/partials']
+            batch: ['./src/partials'],
+            helpers: {
+                times: function(n, options) {
+                    var accum = '';
+                    this.index = 0;
+                    for(this.index; this.index < n; ++this.index)
+                        accum += options.fn();
+                    return accum;
+                },
+                set_active: function(index) {
+                    if (index === 0) return 'repertoire-item__slider-toggle--active';
+                }
+            }
         }))
        .pipe(rename({
            extname: '.html'

@@ -13,9 +13,14 @@
             var mask = $('.banner__mask');
             var parentWidth = mask.closest('.banner').width();
             var h = Math.sin(0.087) * parentWidth;
+            var diff = 100;
 
             mask.attr('height', h);
-            $('.banner__after-decor').css('bottom', h/2);
+            if (h < 100) {
+                h = 0;
+                diff = 0;
+            }
+            $('.banner__after-decor').css('bottom', h - diff);
         }
     });
 }());

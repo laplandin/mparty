@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-2">
                             {{> components/index-article/index-article
-                                title='Региональный конкурс- праздник детского хореографического искусства «Вершины Успеха »'
+                                title='Региональный конкурс - праздник детского хореографического искусства «Вершины Успеха»'
                                 text='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aliquam architecto assumenda at atque aut beatae consectetur culpa cupiditate debitis dicta ea eius eligendi eos et excepturi exercitationem impedit in inventore minima minus molestias necessitatibus nostrum officiis, perspiciatis praesentium, quas quo quos repellat repellendus sint soluta sunt temporibus! Error, illum.'
                                 enroll=true
                             }}
@@ -42,11 +42,12 @@
             </div>
         </div>
         {{> components/index-footer/index-footer}}
-        {{> components/modal/modal title='Оставить заявку' enroll=true}}
+        {{> components/modal/modal title='Подача заявки на участие' enroll=true action='competition_callback.php'}}
     {{/inline}}
 
     {{#* inline "scripts-block"}}
         <script src="plugins/parallax/parallax.min.js"></script>
         <script src="plugins/maskedInput/masked.input.js"></script>
+        <script src="plugins/jqueryValidate/jquery.validate.js"></script>
     {{/inline}}
 {{/layouts/base}}

@@ -6,7 +6,65 @@
             $(calcItem);
             $(window).on('resize', calcItem);
 
-            $('.repertoire-item__image').on('click', function() {
+            Handlebars.registerHelper('times', function(n, options) {
+                var accum = '';
+                this.index = 0;
+                for(this.index; this.index < n; ++this.index)
+                    accum += options.fn();
+                return accum;
+            });
+
+            Handlebars.registerHelper('set_active', function(index) {
+                console.log(index);
+               if (index === 0) return 'repertoire-item__slider-toggle--active';
+            });
+
+            setHandlers();
+
+            function setHandlers() {
+                $('.repertoire-item__image').on('click', ImgHandler);
+                $('.repertoire-item__slider-toggle').on('click', ToggleHandler);
+            }
+
+            function resetHandlers() {
+                $('.repertoire-item__image').unbind('click', ImgHandler);
+                $('.repertoire-item__slider-toggle').unbind('click', ToggleHandler);
+                setHandlers();
+            }
+
+            function ToggleHandler () {
+                var slider = $(this).closest('.repertoire-item__slider');
+                var preloader = slider.find('.preload-juggle');
+
+                // set active toggle state
+
+                $(this).siblings().removeClass('repertoire-item__slider-toggle--active');
+                $(this).addClass('repertoire-item__slider-toggle--active');
+
+                //set new imgSrc
+
+                var currentImg = slider.find('img');
+                var currentSrc = currentImg.attr('src');
+                var index = + $(this).closest('.repertoire-item__slider-toggles-list').find('li').index(this) + 1;
+
+                var srcArr = currentSrc.split('.');
+                srcArr[0] = srcArr[0].slice(0, -1) + index;
+
+                newSrc = srcArr.join('.');
+                currentImg.attr('src', newSrc);
+
+                //set preloader while loading
+
+                preloader.show();
+
+                // main image loaded ?
+                $('img').on('load', function() {
+                    // hide/remove the preloader
+                    preloader.hide();
+                });
+            }
+
+            function ImgHandler () {
                 var slider = $(this).closest('.repertoire-item__slider');
                 var preloader = slider.find('.preload-juggle');
                 var toggles = '.repertoire-item__slider-toggle';
@@ -40,105 +98,80 @@
                     // hide/remove the preloader
                     preloader.hide();
                 });
-
-            });
-
-            $('.repertoire-item__slider-toggle').on('click', function() {
-
-                var slider = $(this).closest('.repertoire-item__slider');
-                var preloader = slider.find('.preload-juggle');
-
-                // set active toggle state
-
-                $(this).siblings().removeClass('repertoire-item__slider-toggle--active');
-                $(this).addClass('repertoire-item__slider-toggle--active');
-
-                //set new imgSrc
-
-                var currentImg = slider.find('img');
-                var currentSrc = currentImg.attr('src');
-                var index = + $(this).closest('.repertoire-item__slider-toggles-list').find('li').index(this) + 1;
-
-                var srcArr = currentSrc.split('.');
-                srcArr[0] = srcArr[0].slice(0, -1) + index;
-
-                newSrc = srcArr.join('.');
-                currentImg.attr('src', newSrc);
-
-                //set preloader while loading
-
-                preloader.show();
-
-                // main image loaded ?
-                $('img').on('load', function(){
-                    // hide/remove the preloader
-                    preloader.hide();
-                });
-            });
+            }
 
             var data = [
                 {
                     "title": "Свистопляска",
                     "text": "Русская плясовая.",
                     "link": "#",
-                    "src": "rep11-1.jpg"
+                    "src": "rep11-1.jpg",
+                    "count": "4"
                 },
                 {
                     "title": "Диджейский микс",
                     "text": "Танцевальное настроение дискотеки",
                     "link": "#",
-                    "src": "rep12-1.jpg"
+                    "src": "rep12-1.jpg",
+                    "count": "4"
                 },
                 {
                     "title": "Твоя энергия",
                     "text": "Жизнеутверждающая молодежная яркая композиция. Современная хореография",
                     "link": "#",
-                    "src": "rep13-1.jpg"
+                    "src": "rep13-1.jpg",
+                    "count": "4"
                 },
                 {
                     "title": "Цыганский  разгуляй",
                     "text": "Зажигательная стилизованная композиция (музыка из репертуара Madonna)",
                     "link": "#",
-                    "src": "rep14-1.jpg"
+                    "src": "rep14-1.jpg",
+                    "count": "4"
                 },
                 {
                     "title": "Нас миллионы",
                     "text": "Проникновенный нежный номер",
                     "link": "#",
-                    "src": "rep15-1.jpg"
+                    "src": "rep15-1.jpg",
+                    "count": "4"
                 },
                 {
                     "title": "Celebrate",
                     "text": "Jazz-funk Современная пластика, фристайл",
                     "link": "#",
-                    "src": "rep16-1.jpg"
+                    "src": "rep16-1.jpg",
+                    "count": "3"
                 },
                 {
                     "title": "Балканский дискоданс Disco-Partizani",
                     "text": "40-минутное вокально-танцевальное представление, не оставляющее равнодушным никого. Под эти ритмы невозможно усидеть на месте! Танцевальная программа при участии  зрителей",
                     "link": "#",
-                    "src": "rep17-1.jpg"
+                    "src": "rep17-1.jpg",
+                    "count": "3"
                 },
                 {
                     "title": "Баварский Джаз",
                     "text": "40-минутное вокально-танцевальное представление основанное на пивных историях и безудержных танцах . мы оказываемся в центре баварской деревушки и вовлекаем вас в пивные танцевальные истории",
                     "link": "#",
-                    "src": "rep18-1.jpg"
+                    "src": "rep18-1.jpg",
+                    "count": "3"
                 },
                 {
                     "title": "Менуэт",
                     "text": "Историческая стилизация, погружающая в эпоху барокко",
                     "link": "#",
-                    "src": "rep19-1.jpg"
+                    "src": "rep19-1.jpg",
+                    "count": "3"
                 }
             ];
 
-            var isFired = true;
+            var isFired = false;
 
             $(document).on('scroll', function() {
 
-                if (($(window).scrollTop() >= (($(document).height() - $(window).height()) * 0.7)) && isFired) {
-                    isFired = false;
+                if (($(window).scrollTop() >= (($(document).height() - $(window).height()) * 0.7)) && !isFired) {
+                    isFired = true;
                     var currentItem = getItemsNumber();
 
                     data.forEach(function(item) {
@@ -147,6 +180,9 @@
 
                     $(this).trigger('render');
                     calcItem();
+                    $('.repertoire-item__image').on('click', ImgHandler);
+                    $('.repertoire-item__slider-toggle').on('click', ToggleHandler);
+                    resetHandlers();
                 }
             });
         }

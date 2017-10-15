@@ -7,9 +7,9 @@
     <div class="repertoire-item__slider" data-image="0">
         <img class="repertoire-item__image" src="img/repertoire/{{content.src}}" alt="">
         <ul class="repertoire-item__slider-toggles-list">
-            <li class="repertoire-item__slider-toggle repertoire-item__slider-toggle--active"></li>
-            <li class="repertoire-item__slider-toggle"></li>
-            <li class="repertoire-item__slider-toggle"></li>
+            {{#times content.count}}
+                <li class="repertoire-item__slider-toggle {{set_active ../index}}"></li>
+            {{/times}}
         </ul>
         {{> components/preloader/preloader}}
     </div>
