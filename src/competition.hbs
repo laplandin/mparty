@@ -1,6 +1,6 @@
 {{#> layouts/base title="Свадьба"}}
-    {{#* inline "nav"}}
-        {{> components/nav}}
+    {{#* inline "head-block"}}
+        <link rel="stylesheet" href="plugins/flexslider/flexslider.css">
     {{/inline}}
 
     {{#*inline "content-block"}}
@@ -28,8 +28,26 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="promo promo--inverse">
-                            <img src="img/prises.jpg" alt="Призы" class="promo__img">
+                        <div class="promo-slider promo-slider--inverse">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="img/compere-slider/wedding.jpg" alt="Ведение свадеб" class="promo__img">
+                                    </li>
+                                    <li>
+                                        <img src="img/compere-slider/1.jpg" alt="Ведение свадеб" class="promo__img">
+                                    </li>
+                                    <li>
+                                        <img src="img/compere-slider/2.jpg" alt="Ведение свадеб" class="promo__img">
+                                    </li>
+                                    <li>
+                                        <img src="img/compere-slider/3.jpg" alt="Ведение свадеб" class="promo__img">
+                                    </li>
+                                    <li>
+                                        <img src="img/compere-slider/4.jpg" alt="Ведение свадеб" class="promo__img">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -49,5 +67,6 @@
         <script src="plugins/parallax/parallax.min.js"></script>
         <script src="plugins/maskedInput/masked.input.js"></script>
         <script src="plugins/jqueryValidate/jquery.validate.js"></script>
+        <script src="plugins/flexslider/jquery.flexslider.js"></script>
     {{/inline}}
 {{/layouts/base}}
