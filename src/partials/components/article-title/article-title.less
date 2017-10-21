@@ -1,6 +1,7 @@
 .article-title {
   position: relative;
   padding-bottom: 2em;
+  text-align: right;
 
   .font(@fira-sans, 2.4em, 1.2em, 700);
   color: @black;
@@ -22,5 +23,9 @@
     &::after {
       width: 100%;
     }
+  }
+
+  &--decor-left::after {
+    left: 0;
   }
 }

@@ -24,6 +24,8 @@ var wrap       = require('gulp-wrap');
 var handlebars = require('gulp-handlebars');
 var declare    = require('gulp-declare');
 
+var include = require('gulp-include');
+
 var path = {
     build: {
         //Адреса куда ложить файлы сборки
@@ -82,22 +84,36 @@ gulp.task('ttf2woff', function(){
 
 var repertoireData = require('./src/model/repertoire-items.json');
 var serviceData = require('./src/model/service-item.json');
+var schoolsData = require('./src/model/schools.json');
+var schoolTrainData = require('./src/model/school-trainings.json');
 
 gulp.task('html:build', function() {
    return gulp.src('./src/*.hbs') //выбор фалов по нужному пути
-        .pipe(handlebarsCompile({repertoire: repertoireData, service: serviceData}, {
+        .pipe(handlebarsCompile({
+            repertoire: repertoireData,
+            service: serviceData,
+            schools: schoolsData,
+            schoolTrain: schoolTrainData
+        }, {
             ignorePartials: true,
             batch: ['./src/partials'],
             helpers: {
-                times: function(n, options) {
+                times: function (n, options) {
                     var accum = '';
                     this.index = 0;
-                    for(this.index; this.index < n; ++this.index)
+                    for (this.index; this.index < n; ++this.index)
                         accum += options.fn();
                     return accum;
                 },
-                set_active: function(index) {
+                set_active: function (index) {
                     if (index === 0) return 'repertoire-item__slider-toggle--active';
+                },
+                is_even: function (conditional, options) {
+                    if ((conditional % 2) === 0) {
+                        return options.fn(this);
+                    } else {
+                        return options.fn(this) + '--inverse';
+                    }
                 }
             }
         }))

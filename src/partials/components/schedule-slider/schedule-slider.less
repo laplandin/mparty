@@ -1,0 +1,45 @@
+.schedule-slider {
+  position: relative;
+
+  &__before,
+  &__after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+    background: url("../img/slide-arrow.png") center center no-repeat;
+    cursor: pointer;
+  }
+
+  &__before {
+    left: -50px;
+  }
+
+  &__after {
+    right: -50px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+}
+
+.schedule-slider__address {
+  margin-top: 30px;
+  .font(@fira-sans, 1.8em, 1em, 300);
+  text-align: right;
+}
+
+.schedule-slider[data-active="0"] {
+  .schedule-slider__before {
+    display: none;
+  }
+}
+
+.schedule-slider[data-active="2"] {
+  .schedule-slider__after {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+<article class="school-trainings row {{#is_even @index}}school-trainings{{/is_even}}">
+    <div class="school-trainings__img-wrapper col-xs-6">
+        <img class="school-trainings__img" src="{{src}}" alt="Школа танцев M-Party">
+    </div>
+    <div class="school-trainings__info-wrapper col-xs-offset-1 col-xs-4">
+        {{> components/article-title/article-title title=this.title}}
+        <ul class="school-trainings__train-list">
+            {{#each features}}
+                <li class="school-trainings__item">{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</article>

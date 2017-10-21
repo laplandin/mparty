@@ -1,0 +1,65 @@
+.school-training-wrapper {
+  margin-top: 70px;
+
+  @media @md-desktop {
+    margin-top: 50px;
+  }
+}
+
+.school-trainings {
+  color: black;
+  margin-bottom: 30px;
+
+  .article-title {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+
+  .article-title::after {
+    left: 0;
+    right: auto;
+    width: 20%;
+  }
+
+  &--inverse {
+    .article-title::after {
+      right: 0;
+      left: auto;
+    }
+
+    text-align: right;
+
+    .school-trainings__img-wrapper {
+      float: right;
+    }
+  }
+}
+
+.school-trainings__info-wrapper {
+  padding-top: 50px;
+  margin: 0 8.33333333%;
+  box-sizing: border-box;
+}
+
+.school-trainings__train-list {
+  padding: 0;
+  .font(@fira-book, 1.8em, 1.2em, 700);
+  list-style: none;
+}
+
+.school-trainings__item {
+  margin-bottom: 18px;
+}
+
+.school-trainings__img-wrapper {
+  padding-top: 1%;
+  transform: skewY(-5deg);
+  overflow: hidden;
+}
+
+.school-trainings__img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  transform: skewY(5deg) scale(1.2);
+}
