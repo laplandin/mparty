@@ -15,18 +15,24 @@
     margin-bottom: 30px;
   }
 
-  .article-title::after {
-    left: 0;
-    right: auto;
-    width: 20%;
+  .article-title {
+    text-align: left;
+    &::after {
+      left: 0;
+      right: auto;
+      width: 20%;
+    }
   }
 
   &--inverse {
-    .article-title::after {
-      right: 0;
-      left: auto;
-    }
+    .article-title {
+      text-align: right;
 
+      &::after {
+        right: 0;
+        left: auto;
+      }
+    }
     text-align: right;
 
     .school-trainings__img-wrapper {

@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-offset-1 col-xs-11">
-                            {{> components/article-title/article-title title='Действующие филиалы' mod='decor-left'}}
+                            {{> components/article-title/article-title title='Действующие филиалы' mod='left'}}
                             {{#each schools}}
                                 {{> components/school-item/school-item this}}
                             {{/each}}
@@ -36,13 +36,13 @@
                 </div>
             </div>
         </div>
-        {{> components/modal/modal title='Бронирование' text='Пожалуйста выберите дату для бронирования'}}
+        {{> components/modal/modal title='Запись в школу' enroll=true}}
         {{> components/index-footer/index-footer}}
     {{/inline}}
 
     {{#* inline "scripts-block"}}
         <script src="plugins/parallax/parallax.min.js"></script>
         <script src="plugins/maskedInput/masked.input.js"></script>
+        <script src="plugins/jqueryValidate/jquery.validate.js"></script>
     {{/inline}}
-
 {{/layouts/base}}

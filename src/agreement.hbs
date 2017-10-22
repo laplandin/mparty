@@ -1,0 +1,23 @@
+{{#> layouts/base title="Афиша" }}
+    {{#*inline "content-block"}}
+        <div class="container-fluid site-wrapper">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    {{> components/index-nav/index-nav}}
+                    {{> components/socials/socials}}
+                </div>
+                <div class="col-xs-10 content-wrapper content-wrapper--poster">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            {{> components/agreement/agreement}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+    {{/inline}}
+{{/layouts/base}}
