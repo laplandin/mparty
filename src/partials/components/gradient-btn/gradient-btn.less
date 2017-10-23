@@ -1,0 +1,29 @@
+.gradient-btn {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
+
+  text-transform: uppercase;
+  .font(@fira-sans, 2em, 1em, 700);
+
+  border-width: 4px;
+  border-style: solid;
+  border-image:
+          linear-gradient( 126deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%) 1 1 1 1;
+
+  color: @primary;
+  //background-image: linear-gradient( 126deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%);
+  //-webkit-background-clip: text;
+  //-webkit-text-fill-color: transparent;
+
+  cursor: pointer;
+  transition: all .2s linear;
+
+  &:hover {
+    color: @white;
+    background-image: linear-gradient( 126deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%);
+    //-webkit-background-clip: border-box;
+    //-webkit-text-fill-color: white;
+  }
+}
