@@ -1,0 +1,22 @@
+.section-title {
+  text-align: center;
+}
+
+.section-title__title {
+  display: inline-block;
+  .font(@fira-sans, 2.6em, 1em, 700);
+  padding: 0 34px 34px;
+  position: relative;
+  margin-bottom: 60px;
+
+  text-transform: uppercase;
+
+  &::after {
+    .pseudo();
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    background: linear-gradient( 90deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%);
+  }
+}

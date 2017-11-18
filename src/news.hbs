@@ -3,13 +3,16 @@
         <div class="container-fluid site-wrapper">
             <div class="row">
                 <div class="col-xs-2 index-nav-wrapper">
-                    {{> components/index-nav/index-nav}}
-                    {{> components/socials/socials}}
+                    <div class="nav-content-wrapper">
+                        {{> components/index-nav/index-nav}}
+                        {{> components/socials/socials}}
+                    </div>
                 </div>
                 <div class="col-xs-10 content-wrapper content-wrapper--news">
                     <div class="row">
-                        {{> components/banner/banner title='' bg='repertoire'}}
+                        {{> components/banner/banner title='' bg='news'}}
                     </div>
+                    {{> components/section-title/section-title title='Новости'}}
                     <div class="row news-item-wrapper">
                         <div class="col-xs-4">
                             {{> components/news-item/news-item}}
@@ -33,6 +36,6 @@
     {{/inline}}
 
     {{#* inline "scripts-block"}}
-        <script src="plugins/parallax/parallax.min.js"></script>
+
     {{/inline}}
 {{/layouts/base}}
