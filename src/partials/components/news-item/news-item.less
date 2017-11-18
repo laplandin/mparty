@@ -1,0 +1,25 @@
+.news-item-wrapper {
+
+}
+
+.news-item__img {
+  max-width: 100%;
+
+}
+
+.news-item__caption {
+  .font(@fira-sans, 2em, 1.3em, 700);
+
+  &::before {
+    .pseudo();
+    width: 8px;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient( 90deg, rgb(251,29,81) 0%, rgb(115,17,183) 87%, rgb(115,17,183) 95%, rgb(115,17,183) 100%) 1 1 1 1;
+  ;
+  }
+}
+
+.news-item__date {
+  .font(@fira-sans, 1.7em, 1em, 300);
+}

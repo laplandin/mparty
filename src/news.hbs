@@ -1,0 +1,38 @@
+{{#> layouts/base title="Школа" }}
+    {{#*inline "content-block"}}
+        <div class="container-fluid site-wrapper">
+            <div class="row">
+                <div class="col-xs-2 index-nav-wrapper">
+                    {{> components/index-nav/index-nav}}
+                    {{> components/socials/socials}}
+                </div>
+                <div class="col-xs-10 content-wrapper content-wrapper--news">
+                    <div class="row">
+                        {{> components/banner/banner title='' bg='repertoire'}}
+                    </div>
+                    <div class="row news-item-wrapper">
+                        <div class="col-xs-4">
+                            {{> components/news-item/news-item}}
+                        </div>
+                        <div class="col-xs-4">
+                            {{> components/news-item/news-item}}
+                        </div>
+                        <div class="col-xs-4">
+                            {{> components/news-item/news-item}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-5 col-xs-2">
+                            {{> components/secondary-btn/secondary-btn title='Больше новостей'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> components/index-footer/index-footer}}
+    {{/inline}}
+
+    {{#* inline "scripts-block"}}
+        <script src="plugins/parallax/parallax.min.js"></script>
+    {{/inline}}
+{{/layouts/base}}
