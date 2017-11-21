@@ -16,24 +16,45 @@
                 <div class="col-xs-10 content-wrapper content-wrapper--poster">
                     <div class="row">
                         <div class="col-xs-12 poster-banner-wrapper">
-                            {{> components/banner--content/poster-banner}}
+                            {{> components/banner/banner title='Афиша' bg='compere'}}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-offset-1 col-xs-10">
-                            {{> components/schedule/schedule title='Расписание'}}
+                            {{> components/calendar/calendar}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-9 col-xs-offset-2">
-                            {{> components/index-article/index-article title='' text='M-PARTY- центр подпитки положительными эмоциями! Это невероятный приобретенный организационный опыт. Слаженная команда режиссеров, постановщиков , звукооператоров, осветителей, ведущих, музыкантов , обьединенных под одним брендом. Это всегда качественные мероприятия! Каждое из них отличается особым подходом и незабываемым подчерком. У нас вы всегда  найдете для себя что-то необычное и запоминающееся !  Это 16 лет творческого пути. Более 1000 проведенных мероприятий, концертов, свадеб, дней рождений,выпускных балов. Это выступления по всей России и за рубежом. Стоит только набрать номер…'}}
+                        <div class="col-xs-offset-1 col-xs-10" style="text-align: right">
+                            {{> components/order-btn/order-btn href='#' value='забронировать'}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-1 col-xs-10">
+                            {{>components/order-form/order-form}}
+                        </div>
+                    </div>
+                    <div class="row tile-item-wrapper">
+                        <div class="col-xs-4">
+                            {{> components/tile-item/tile-item}}
+                        </div>
+                        <div class="col-xs-4">
+                            {{> components/tile-item/tile-item}}
+                        </div>
+                        <div class="col-xs-4">
+                            {{> components/tile-item/tile-item}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-offset-4 col-xs-4">
+                            {{> components/secondary-btn/secondary-btn title='Больше анонсов'}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         {{> components/index-footer/index-footer}}
-        {{> components/modal/modal title='Запись в школу' enroll=true action='school_callback.php'}}
+        {{> components/modal/modal title='Бронирование' text='Пожалуйста выберите дату для бронирования'}}
     {{/inline}}
 
     {{#* inline "footer-block"}}
@@ -41,7 +62,6 @@
     {{/inline}}
 
     {{#* inline "scripts-block"}}
-        <script src="plugins/parallax/parallax.min.js"></script>
         <script src="plugins/maskedInput/masked.input.js"></script>
         <script src="plugins/jqueryValidate/jquery.validate.js"></script>
     {{/inline}}

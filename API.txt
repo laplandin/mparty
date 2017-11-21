@@ -1,0 +1,50 @@
+POST
+
+post_callback.php - бронирование труппы на определенную дату
+данные {
+	name:String
+	phone:(111) 111-1111 - formatted String
+	comment: String
+	date[year]: Number
+	date[month]: Number
+	date[day]: Number
+}
+
+post_event_callback.php - бронирование на меропри€тие из календар€
+данные {
+	name:String
+	phone:(111) 111-1111 - formatted String
+	comment: String
+	date[year]: Number
+	date[month]: Number
+	date[day]: Number
+	date[event][name]:‘естиваль
+	date[event][price]:300
+	date[event][place]:ƒ  –остсельмаш
+}
+
+GET 
+
+ƒанные о меропри€ти€х из календар€
+get_events.php - получение списка событий из календар€
+формат ответа JSON, в котором массив объектов
+[
+                    {
+                        date: [год, мес€ц, день],
+                        info: {
+                            name: 'название меропри€ти€',
+                            price: цена,
+                            place: 'место',
+			    time: 'врем€ начала'
+                        }
+                    },
+                    {
+                        date: [год, мес€ц, день],
+                        info: {
+                            name: 'название меропри€ти€',
+                            price: цена,
+                            place: 'место',
+			    time: 'врем€ начала'
+                        }
+                    }
+                ]

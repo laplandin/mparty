@@ -6,9 +6,15 @@
             showMessage(validateResult.message);
             return false;
         }
+
+        console.log(validateResult);
+
+        var url = validateResult.data.date.hasOwnProperty("event") ? 'post_event_callback.php' : 'post_callback.php';
+        console.log(url);
+
         $.ajax({
             type: 'post',
-            url:'post_callback.php',
+            url: url,
             data: validateResult.data,
             success : function(mes){
                 showMessage('Спасибо за заказ, наш менеджер свяжется с вами');
@@ -48,7 +54,7 @@
         var form = $('.order-form');
         var submitBtn = $('.order-form__submit');
         var textarea = $('.order-form__textarea');
-        $("#order-form__phone").mask("(999) 999-9999");
+        phone.mask("(999) 999-9999");
         var bookedInfo = {};
 
         submitBtn.children('a').on('click', function(e) {

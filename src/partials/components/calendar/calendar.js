@@ -4,7 +4,7 @@
             var calendar = (function () {
                 var events = [
                     {
-                        date: new Date(2017, 9, 10),
+                        date: new Date(2017, 11, 22),
                         info: {
                             name: 'Фестиваль1',
                             price: 300,
@@ -12,7 +12,7 @@
                         }
                     },
                     {
-                        date: new Date(2017, 9, 12),
+                        date: new Date(2017, 11, 24),
                         info: {
                             name: 'Фестиваль2',
                             price: 400,
@@ -20,7 +20,7 @@
                         }
                     },
                     {
-                        date: new Date(2017, 10, 9),
+                        date: new Date(2017, 10, 30),
                         info: {
                             name: 'Фестиваль',
                             price: 300,
@@ -28,10 +28,11 @@
                         }
                     }
                 ];
+                events = [];
                 var calendar;
-                var bookedEvents = {};
                 var bookedDay = {};
                 var activeClass = '.calendar__active-month';
+                var calendarMode = /poster/.test(window.location.href) ? "poster" : "booking";
 
                 function init(selector) {
                     calendar = selector;
@@ -98,8 +99,16 @@
                         $(id+' .tbody').append('<div class="tr tr--transparent"><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div><div class="td">&nbsp;</div></div>');
                     }
                     $(window).trigger('resize');
+                    switch (calendarMode) {
+                        case "poster" :
+                            fetchEvents(setEvents);
+                            // setEvents();
+                            break;
+                        case "booking" :
+                            setBookHandlers();
+                            break;
+                    }
                     checkSelected(D);
-                    setBookHandlers();
                 }
 
                 function checkSelected (selectedDate) {
@@ -120,10 +129,10 @@
                     events.forEach(function(item, index, array) {
                        if (item.date.getFullYear() === currentYear && item.date.getMonth() === currentMonth) {
                            var eventCell = $(calendar + ' .tbody .td:contains(' + item.date.getDate() + ')');
-                           eventCell.data("info", item.info)
+                           eventCell.data({"info": item.info, "date": item.date})
                                .addClass('calendar__event')
                                .append(addTooltip(item.info))
-                               .on('click', chooseEvent);
+                               .on('click', bookDate);
                        }
                     });
                 }
@@ -140,13 +149,6 @@
                     return template;
                 }
 
-                function chooseEvent () {
-                    $(this).toggleClass('td--selected');
-                    if ($(this).hasClass('calendar__event--selected')) {
-                        bookedEvents = $(this).data('info');
-                    }
-                }
-
                 function setBookHandlers () {
                     $(calendar + ' .tbody .td--available:not(.calendar__event)').on('click', bookDate);
                 }
@@ -155,22 +157,57 @@
                     if (!$(this).hasClass('td--selected')) {
                         $('.td--selected').removeClass('td--selected');
                         var day = $(this).text();
-                        bookedDay =  {
-                            year: $(calendar + ' ' + activeClass).data('year'),
-                            month: $(calendar + ' ' + activeClass).data('month') + 1,
-                            day: Number(day)
-                        };
+                        if (isNaN(day)) {
+                            var bookedDate = $(this).data("date");
+                            var info = $(this).data("info");
+                            bookedDay = {
+                                year: bookedDate.getFullYear(),
+                                month: bookedDate.getMonth() + 1,
+                                day: bookedDate.getDate(),
+                                event: info
+                            };
+                        } else {
+                            bookedDay =  {
+                                year: $(calendar + ' ' + activeClass).data('year'),
+                                month: $(calendar + ' ' + activeClass).data('month') + 1,
+                                day: Number(day)
+                            };
+                        }
+                        console.log(bookedDay);
                         $(this).toggleClass('td--selected');
-                        inform('data-update', '.order-form', bookedDay);
+                        eventBus('data-update', '.order-form', bookedDay);
                     } else {
                         bookedDay = {};
-                        inform('data-update', '.order-form', bookedDay);
+                        eventBus('data-update', '.order-form', bookedDay);
                         $(this).toggleClass('td--selected');
                     }
                 }
 
                 function getBookedDay () {
                     return bookedDay;
+                }
+
+                function fetchEvents (cb) {
+                    var url = "get_events.php";
+                    $.ajax({
+                        type: "GET",
+                        url: "test.json",
+                        success : function(data){
+                            console.log(data);
+                            data.forEach(function (item) {
+                               var event = {
+                                   date: new Date(item.date[0], item.date[1], item.date[2]),
+                                   info: item.info
+                               };
+                               events.push(event);
+                            });
+                            console.log(events);
+                            cb(events);
+                        },
+                        error: function(err) {
+                            console.error("Events not fetched, try later");
+                        }
+                    });
                 }
 
                 return {
@@ -189,7 +226,7 @@
                     showMessage();
                     return;
                 }
-                inform('order', '.order-form', calendar.bookedDay());
+                eventBus('order', '.order-form', calendar.bookedDay());
                 $(this).fadeOut();
             });
         }
@@ -197,6 +234,6 @@
     });
 // }());
 
-function inform(event, target, data) {
+function eventBus(event, target, data) {
     $(target).trigger(event, data);
 }
