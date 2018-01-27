@@ -4,7 +4,7 @@
             var calendar = (function () {
                 var events = [
                     {
-                        date: new Date(2017, 11, 22),
+                        date: new Date(2018, 0, 1),
                         info: {
                             name: 'Фестиваль1',
                             price: 300,
@@ -12,7 +12,7 @@
                         }
                     },
                     {
-                        date: new Date(2017, 11, 24),
+                        date: new Date(2018, 1, 1),
                         info: {
                             name: 'Фестиваль2',
                             price: 400,
@@ -20,7 +20,7 @@
                         }
                     },
                     {
-                        date: new Date(2017, 10, 30),
+                        date: new Date(2018, 0, 14),
                         info: {
                             name: 'Фестиваль',
                             price: 300,
@@ -32,7 +32,8 @@
                 var calendar;
                 var bookedDay = {};
                 var activeClass = '.calendar__active-month';
-                var calendarMode = /poster/.test(window.location.href) ? "poster" : "booking";
+                var calendarMode = 'combination';
+                // var calendarMode = /poster/.test(window.location.href) ? "poster" : "booking";
 
                 function init(selector) {
                     calendar = selector;
@@ -59,7 +60,7 @@
                         DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
                         DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(),
                         calendar = '<div class="tr">';
-                    monthes = [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+                    mounthes = [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
                     if (DNfirst !== 0) {
                         for(var  i = 1; i < DNfirst; i++) calendar += '<div class="td"></div>';
                     } else {
@@ -89,10 +90,10 @@
                         $('.calendar__month-toggle--prev').show();
                     }
 
-                    for(var  i = DNlast; i < 7; i++) calendar += '<div class="td">&nbsp;</div>';
+                    for(var i = DNlast; i < 7; i++) calendar += '<div class="td">&nbsp;</div>';
                     var activeEl = $(activeClass)[0];
                     $(id + ' .tbody').html(calendar);
-                    $(id + ' ' + activeClass).html(monthes[D.getMonth()] +' '+ D.getFullYear());
+                    $(id + ' ' + activeClass).html(mounthes[D.getMonth()] +' '+ D.getFullYear());
                     $.data(activeEl, 'month', D.getMonth());
                     $.data(activeEl, 'year', D.getFullYear());
                     if ($(id+' .tbody .tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
@@ -107,6 +108,8 @@
                         case "booking" :
                             setBookHandlers();
                             break;
+                        case "combination" :
+                            fetchEvents([setEvents, setBookHandlers]);
                     }
                     checkSelected(D);
                 }
@@ -127,13 +130,18 @@
                     var currentYear = $(calendar + ' ' + activeClass).data('year');
 
                     events.forEach(function(item, index, array) {
-                       if (item.date.getFullYear() === currentYear && item.date.getMonth() === currentMonth) {
-                           var eventCell = $(calendar + ' .tbody .td:contains(' + item.date.getDate() + ')');
-                           eventCell.data({"info": item.info, "date": item.date})
-                               .addClass('calendar__event')
-                               .append(addTooltip(item.info))
-                               .on('click', bookDate);
-                       }
+                        var day = item.date.getDate();
+                        if (item.date.getFullYear() === currentYear && item.date.getMonth() === currentMonth) {
+                            var eventCell = $(calendar + ' .tbody .td:contains(' + day + ')')
+                                .not('.td--unavailable')
+                                .filter(function(index, item) {if ($(item).text() === String(day)) return item;});
+                            var selection = eventCell.data({"info": item.info, "date": item.date})
+                                .addClass('calendar__event')
+                                .append(addTooltip(item.info));
+                            if (calendarMode === 'booking') {
+                                selection.on('click', bookDate);
+                            }
+                        }
                     });
                 }
 
@@ -141,7 +149,7 @@
                     var template = '<div class="calendar__tooltip">' +
                         '<p class="calendar__tooltip-name">%name</p>' +
                         '<p class="calendar__tooltip-place">%place</p>' +
-                        '<p class="calendar__tooltip-price">цена: %price</p>' +
+                        // '<p class="calendar__tooltip-price">цена: %price</p>' +
                         '</div>';
                     template = template.replace('%name', info.name)
                         .replace('%place', info.place)
@@ -173,7 +181,6 @@
                                 day: Number(day)
                             };
                         }
-                        console.log(bookedDay);
                         $(this).toggleClass('td--selected');
                         eventBus('data-update', '.order-form', bookedDay);
                     } else {
@@ -187,13 +194,18 @@
                     return bookedDay;
                 }
 
+                /**
+                 *
+                 * @param cb - function or Array of functions
+                 */
                 function fetchEvents (cb) {
-                    var url = "get_events.php";
+                    var url = "get_events.json";
                     $.ajax({
                         type: "GET",
-                        url: "test.json",
+                        url: url,
                         success : function(data){
-                            console.log(data);
+                            data = JSON.parse(data);
+                            events = [];
                             data.forEach(function (item) {
                                var event = {
                                    date: new Date(item.date[0], item.date[1], item.date[2]),
@@ -201,7 +213,12 @@
                                };
                                events.push(event);
                             });
-                            console.log(events);
+                            if (Array.isArray(cb)) {
+                                cb.forEach(function (cb) {
+                                    cb();
+                                });
+                                return;
+                            }
                             cb(events);
                         },
                         error: function(err) {

@@ -38,6 +38,10 @@
       cursor: pointer;
     }
 
+    &--available.calendar__event {
+      cursor: default;
+    }
+
     &--unavailable {
       background-color: #cccccc;
       cursor: default;
@@ -49,7 +53,7 @@
       background-color: lighten(@secondary, 50);
       font-weight: 700;
 
-      border-bottom: 4px solid @secondary;
+      // border-bottom: 4px solid @secondary;
     }
 
     &--today {
