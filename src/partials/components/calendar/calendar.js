@@ -199,7 +199,7 @@
                  * @param cb - function or Array of functions
                  */
                 function fetchEvents (cb) {
-                    var url = "get_events.json";
+                    var url = "get_events.php";
                     $.ajax({
                         type: "GET",
                         url: url,
